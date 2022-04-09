@@ -1,0 +1,227 @@
+@font-face
+{
+font-family: 花鳥風月;
+src: url('https://cdn.leafscape.be/kacho/kacho_web.woff2')
+     format("woff2");
+}
+
+body{
+    min-width: 270px;
+    background-color: #da7cbe;
+}
+header,footer{
+    width: 100%;
+    background-color: #da7cbe;
+    color: #fff;
+}
+header{
+    height: 64px;
+    justify-content: space-between;
+}
+footer{
+    height: 48px;
+    text-align: center;
+}
+h1,h2{
+    font-family: 花鳥風月;
+    font-size: 2em;
+    padding: 17px;
+}
+footer p{
+    padding: 12px;
+}
+
+.flex{
+    display: flex;
+}
+.side_container{
+    height: calc(100vh - 112px);
+    width: calc(50vh - 56px);
+    min-width: 300px;
+    min-height: 600px;
+}
+.timer_container,.btn_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(50% - 10px);
+    background-color: #fff;
+    border: solid 5px #000;
+}
+.movie_container{
+    flex: 1;
+    height: calc(100vh - 122px);
+    margin-left: 5px;
+    border: solid 5px #000;
+    display: flex;
+}
+#start{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-color: #e30541;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+}
+#start:hover{
+    background-color: #fff;
+    color: #e30541;
+    border: solid 1px #e30541;
+}
+.youtube{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+}
+.youtube::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+} 
+.youtube iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: calc(100vh - 122px);
+    border: none;
+}
+
+/* 時計 */
+
+.clock{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient( circle farthest-side at 100px 100px, #f8eae4 0%, #e8dbd6 57%, #63361f 100% );    
+}
+.face{
+    background-color: #fff;
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(30deg);
+    border-top: solid 4px #888;
+    
+}
+.center{
+    background-color: #bf8a82;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.hand{
+    background-color: #e2c6b8;
+    border-radius: 2px;
+    height: 4px; /* 線幅 */
+    position: absolute;
+    right: calc(50% - 6px); /* 位置調整 線幅の半分ずらす */
+    top: calc(50% - 2px); /* 位置調整 線幅の半分ずらす */
+    transform-origin: calc(100% - 2px) center; /* アニメーションの中心軸 線幅の半分ずらす */
+    width: 60%;
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 50%);
+    transform: rotateZ(60deg);
+}
+.hand.active{
+    animation: rotation 180s linear ; 
+}
+.dial{
+    height: 20px;
+    width: 3px;
+    box-shadow: 0 97px 0 0 #e2c6b8, 0 -95px 0 0 #e2c6b8, 2px -95px 0 0 #888, 2px 95px 0 0 #888;
+    opacity: 1;
+    transform: translate(-50%,-50%) rotate(2deg);
+    position: absolute;
+    right: calc(50% - 3px);
+    top: 50%;
+}
+.five_min{
+    transform: translate(-50%,-50%) rotateZ(32deg);
+}
+.dial::before,.dial::after{
+    content: '';
+    height: inherit;
+    width: inherit;
+    box-shadow: inherit;
+    opacity: inherit;
+    position: inherit;
+    right: inherit;
+    top: inherit;
+}
+.dial::before{
+    transform: translate(-50%,-50%) rotateZ(60deg);
+}
+.dial::after{
+    transform: translate(-50%,-50%) rotateZ(120deg);
+    box-shadow: 0 95px 0 0 #e2c6b8, 0 -95px 0 0 #e2c6b8, -2px -95px 0 0 #888,-2px 95px 0 0 #888;
+}
+.five_min.dial::after{
+    box-shadow: 0 95px 0 0 #e2c6b8, 0 -95px 0 0 #e2c6b8, -2px -95px 0 0 #888, -2px 95px 0px 0 #888;
+}
+.five_min.dial::before{
+    box-shadow: 0 95px 0 0 #e2c6b8, 0 -95px 0 0 #e2c6b8, 2px -95px 0 0 #888, 2px 95px 0px 0 #888;
+}
+@keyframes rotation {
+    0% {transform: rotate(60deg)} /* 初期位置 0秒の位置 */
+    100% {transform: rotate(420deg)} /* 初期位置 + 360deg で一周 */
+}
+
+@media(max-width:1000px){
+    .flex{
+        flex-wrap: wrap;
+    }
+    .side_container{
+        display: flex;
+        width: 100%;
+        height: unset;
+        min-height: 300px;
+    }
+    .timer_container, .btn_container{
+        width: 50%;
+        height: calc(100% - 10px);
+    }
+    #start{
+        width: 8em;
+        height: 8em;    
+    }
+    .movie_container{
+        margin-left: 0;
+    }
+}
+@media(max-width:750px){
+    h2{
+        display: none;
+    }
+    .side_container{
+        flex-wrap: wrap;
+        border: solid 5px #000;
+        min-width: unset;
+    }
+    .timer_container,.btn_container{
+        width: 100%;
+        height: auto;
+        border: none;
+        padding: 1em 0;
+    }
+    #start{
+        display: block;
+        width: 10em;
+        height: auto;
+        border-radius: 20px;
+        padding: 1em;
+    }
+}
