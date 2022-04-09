@@ -37,8 +37,8 @@ footer p{
 .side_container{
     height: calc(100vh - 112px);
     width: calc(50vh - 56px);
-    min-width: 300px;
-    min-height: 600px;
+    min-width: 250px;
+    min-height: 500px;
 }
 .timer_container,.btn_container{
     display: flex;
@@ -46,12 +46,14 @@ footer p{
     justify-content: center;
     width: 100%;
     height: calc(50% - 10px);
+    min-height: 250px;
     background-color: #fff;
     border: solid 5px #000;
 }
 .movie_container{
     flex: 1;
     height: calc(100vh - 122px);
+    min-height: 510px;
     margin-left: 5px;
     border: solid 5px #000;
     display: flex;
@@ -90,6 +92,7 @@ footer p{
     width: 100%;
     height: 100%;
     max-height: calc(100vh - 122px);
+    min-height: 515px;
     border: none;
 }
 
@@ -214,6 +217,7 @@ footer p{
     .timer_container,.btn_container{
         width: 100%;
         height: auto;
+        min-height: unset;
         border: none;
         padding: 1em 0;
     }
