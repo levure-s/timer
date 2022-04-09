@@ -50,6 +50,23 @@ footer p{
     background-color: #fff;
     border: solid 5px #000;
 }
+.btn_container{
+    position: relative;
+}
+.btn_container::after{
+    content: '';
+    position: absolute;
+    background: url(../img/studio.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+    transition: all 1s;
+    width: 100%;
+    height: 100%;
+}
+.active.btn_container::after{
+    opacity: 1;
+}
 .movie_container{
     flex: 1;
     height: calc(100vh - 122px);
@@ -66,6 +83,7 @@ footer p{
     color: #fff;
     font-size: 1em;
     font-weight: bold;
+    z-index: 1;
 }
 #start:hover{
     background-color: #fff;
@@ -227,5 +245,8 @@ footer p{
         height: auto;
         border-radius: 20px;
         padding: 1em;
+    }
+    .btn_container::after{
+        background:none;
     }
 }
